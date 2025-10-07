@@ -1,405 +1,65 @@
 {
-  "name": "agent-todos",
+  "name": "@seanm/agent-todos",
   "displayName": "Agent TODOs",
-  "description": "Upgrades VS Code's agent mode with persistent memory and workflow management",
+  "description": "MCP toolset providing agents with persistent task-oriented memory and workflow management",
   "version": "0.0.2",
-  "publisher": "digitarald",
-  "preview": true,
+  "private": true,
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitarald/vscode-agent-todos"
+    "url": "https://github.com/seanmobrien/vscode-agent-todos"
   },
   "license": "MIT",
   "engines": {
-    "vscode": "^1.102.0",
     "node": ">=22.0.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onMcpServerDefinitionProvider:digitarald.agent-todos.mcp-provider"
-  ],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "agentTodos.clearTodos",
-        "title": "Clear All Todos",
-        "category": "Agent TODOs",
-        "icon": "$(clear-all)"
-      },
-      {
-        "command": "agentTodos.clearSavedTodos",
-        "title": "Clear Saved Todos",
-        "category": "Agent TODOs",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "agentTodos.refreshTodos",
-        "title": "Refresh Todos",
-        "category": "Agent TODOs",
-        "icon": "$(refresh)"
-      },
-      {
-        "command": "agentTodos.toggleTodoStatus",
-        "title": "Toggle Todo Status",
-        "category": "Agent TODOs",
-        "icon": "$(check)"
-      },
-      {
-        "command": "agentTodos.toggleAutoInject",
-        "title": "Enable auto-inject into instructions file",
-        "category": "Agent TODOs",
-        "icon": "$(sync)"
-      },
-      {
-        "command": "agentTodos.toggleAutoInjectEnabled",
-        "title": "Disable auto-inject into instructions file",
-        "category": "Agent TODOs",
-        "icon": "$(sync)"
-      },
-      {
-        "command": "agentTodos.toggleAutoOpenView",
-        "title": "Enable auto-open view on changes",
-        "category": "Agent TODOs",
-        "icon": "$(eye)"
-      },
-      {
-        "command": "agentTodos.toggleAutoOpenViewEnabled",
-        "title": "Disable auto-open view on changes",
-        "category": "Agent TODOs",
-        "icon": "$(eye)"
-      },
-      {
-        "command": "agentTodos.deleteTodo",
-        "title": "Delete Todo",
-        "category": "Agent TODOs",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "agentTodos.setStatusPending",
-        "title": "Set Status: Pending",
-        "category": "Agent TODOs",
-        "icon": "$(circle-outline)"
-      },
-      {
-        "command": "agentTodos.setStatusInProgress",
-        "title": "Set Status: In Progress",
-        "category": "Agent TODOs",
-        "icon": "$(sync~spin)"
-      },
-      {
-        "command": "agentTodos.setStatusCompleted",
-        "title": "Set Status: Completed",
-        "category": "Agent TODOs",
-        "icon": "$(pass-filled)"
-      },
-      {
-        "command": "agentTodos.setPriorityHigh",
-        "title": "Set Priority: High",
-        "category": "Agent TODOs",
-        "icon": "$(circle-large)"
-      },
-      {
-        "command": "agentTodos.setPriorityMedium",
-        "title": "Set Priority: Medium",
-        "category": "Agent TODOs",
-        "icon": "$(circle)"
-      },
-      {
-        "command": "agentTodos.setPriorityLow",
-        "title": "Set Priority: Low",
-        "category": "Agent TODOs",
-        "icon": "$(circle-small)"
-      },
-      {
-        "command": "agentTodos.addEditAdr",
-        "title": "Add/Edit ADR",
-        "category": "Agent TODOs",
-        "icon": "$(edit)"
-      },
-      {
-        "command": "agentTodos.clearAdr",
-        "title": "Clear ADR",
-        "category": "Agent TODOs",
-        "icon": "$(clear-all)"
-      },
-      {
-        "command": "agentTodos.runTodo",
-        "title": "Run Todo in Chat",
-        "category": "Agent TODOs",
-        "icon": "$(play)"
-      },
-      {
-        "command": "agentTodos.startPlanning",
-        "title": "Start Planning",
-        "category": "Agent TODOs",
-        "icon": "$(comment-discussion)"
-      },
-      {
-        "command": "agentTodos.saveTodos",
-        "title": "Save to File",
-        "category": "Agent TODOs",
-        "icon": "$(save)"
-      },
-      {
-        "command": "agentTodos.loadTodos",
-        "title": "Load from File",
-        "category": "Agent TODOs",
-        "icon": "$(folder-opened)"
-      },
-      {
-        "command": "agentTodos.openSettings",
-        "title": "Open Settings",
-        "category": "Agent TODOs",
-        "icon": "$(settings-gear)"
-      },
-      {
-        "command": "agentTodos.openInstructionsFile",
-        "title": "Open Instructions File",
-        "category": "Agent TODOs",
-        "icon": "$(file-text)"
-      },
-      {
-        "command": "agentTodos.showHistory",
-        "title": "Show History",
-        "category": "Agent TODOs",
-        "icon": "$(history)"
-      },
-      {
-        "command": "agentTodos.reportIssue",
-        "title": "Report Issue",
-        "category": "Agent TODOs",
-        "icon": "$(report)"
-      },
-      {
-        "command": "agentTodos.toggleCollapsedMode",
-        "title": "Enable Collapsed Mode",
-        "category": "Agent TODOs",
-        "icon": "$(list-tree)"
-      },
-      {
-        "command": "agentTodos.toggleCollapsedModeEnabled",
-        "title": "Disable Collapsed Mode",
-        "category": "Agent TODOs",
-        "icon": "$(list-flat)"
-      }
-    ],
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "todos-container",
-          "title": "Agent TODOs",
-          "icon": "$(checklist)"
-        }
-      ]
-    },
-    "views": {
-      "todos-container": [
-        {
-          "id": "agentTodos",
-          "name": "Todos",
-          "when": "true",
-          "icon": "$(checklist)"
-        }
-      ]
-    },
-    "menus": {
-      "view/title": [
-        {
-          "command": "agentTodos.clearTodos",
-          "when": "view == agentTodos && agentTodos.hasTodos",
-          "group": "navigation"
-        },
-        {
-          "command": "agentTodos.showHistory",
-          "when": "view == agentTodos",
-          "group": "navigation"
-        },
-        {
-          "command": "agentTodos.clearSavedTodos",
-          "when": "view == agentTodos",
-          "group": "1_saved_lists"
-        },
-        {
-          "command": "agentTodos.openSettings",
-          "when": "view == agentTodos",
-          "group": "navigation"
-        },
-        {
-          "command": "agentTodos.toggleCollapsedMode",
-          "when": "view == agentTodos && !agentTodos.collapsedModeEnabled",
-          "group": "navigation"
-        },
-        {
-          "command": "agentTodos.toggleCollapsedModeEnabled",
-          "when": "view == agentTodos && agentTodos.collapsedModeEnabled",
-          "group": "navigation"
-        },
-        {
-          "command": "agentTodos.refreshTodos",
-          "when": "view == agentTodos",
-          "group": "2_file_operations"
-        },
-        {
-          "command": "agentTodos.saveTodos",
-          "when": "view == agentTodos && agentTodos.hasTodos",
-          "group": "2_file_operations"
-        },
-        {
-          "command": "agentTodos.loadTodos",
-          "when": "view == agentTodos",
-          "group": "2_file_operations"
-        },
-        {
-          "command": "agentTodos.openInstructionsFile",
-          "when": "view == agentTodos && agentTodos.autoInjectEnabled",
-          "group": "2_file_operations"
-        }
-      ],
-      "issue/reporter": [
-        {
-          "command": "agentTodos.reportIssue"
-        }
-      ],
-      "view/item/context": [
-        {
-          "command": "agentTodos.runTodo",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "inline@1"
-        },
-        {
-          "command": "agentTodos.toggleTodoStatus",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "inline@2"
-        },
-        {
-          "command": "agentTodos.deleteTodo",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "inline@3"
-        },
-        {
-          "command": "agentTodos.deleteTodo",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "3_modification"
-        },
-        {
-          "command": "agentTodos.setStatusPending",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "1_status"
-        },
-        {
-          "command": "agentTodos.setStatusInProgress",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "1_status"
-        },
-        {
-          "command": "agentTodos.setStatusCompleted",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "1_status"
-        },
-        {
-          "command": "agentTodos.setPriorityHigh",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "2_priority"
-        },
-        {
-          "command": "agentTodos.setPriorityMedium",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "2_priority"
-        },
-        {
-          "command": "agentTodos.setPriorityLow",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "2_priority"
-        },
-        {
-          "command": "agentTodos.addEditAdr",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "5_adr"
-        },
-        {
-          "command": "agentTodos.clearAdr",
-          "when": "view == agentTodos && viewItem =~ /^todoItem/",
-          "group": "5_adr"
-        }
-      ]
-    },
-    "configuration": {
-      "title": "Todos",
-      "properties": {
-        "agentTodos.autoInject": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically inject todo list into copilot instructions file and disable the List Todos tool"
-        },
-        "agentTodos.autoInjectFilePath": {
-          "type": "string",
-          "default": ".github/instructions/todos.instructions.md",
-          "description": "File path for auto-inject feature. Can be relative to workspace root or absolute path."
-        },
-        "agentTodos.autoOpenView": {
-          "type": "boolean",
-          "default": true,
-          "description": "Automatically open the Todos view when the todo list changes"
-        },
-        "agentTodos.collapsedMode": {
-          "type": "boolean",
-          "default": false,
-          "description": "Group completed and pending todos into collapsible sections, focusing on in-progress items"
-        }
-      }
-    },
-    "viewsWelcome": [
-      {
-        "view": "agentTodos",
-        "contents": "No todos yet. Start by planning your tasks.\n\n[Start Planning](command:agentTodos.startPlanning)\n\nOr add todos using the language model tools available in agent mode.",
-        "when": "!agentTodos.hasTodos"
-      }
-    ],
-    "mcpServerDefinitionProviders": [
-      {
-        "id": "digitarald.agent-todos.mcp-provider",
-        "label": "Agent TODOs"
-      }
-    ]
-  },
+  "main": "./dist/mcp/index.js",
+  "types": "./dist/mcp/index.d.ts",
   "scripts": {
     "vscode:prepublish": "npm run package",
-    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "build": "npm run package && npm run build:types && npm run package:types",
+    "dev": "npm run check:types && npm run lint && node esbuild.js --watch",
+    "compile": "npm run check:types && npm run lint && node esbuild.js",
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "package": "npm run check:types && npm run lint && node esbuild.js --production",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "check-types": "tsc --noEmit",
+    "check:types": "tsc --noEmit",
+    "build:types": "tsc -p tsconfig.types.json --emitDeclarationOnly",
+    "package:types": "dts-bundle-generator -o dist/mcp/index.d.ts --project tsconfig.types.json dist/types/src/mcp/standaloneTodoManager.d.ts",
     "lint": "eslint src",
     "test": "vscode-test",
-    "mcp-server": "node dist/mcp/standalone.js"
+    "mcp-server": "node dist/mcp/indexjs",
+    "preinstall": "node preinstall.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.16.0",
-    "@vscode/extension-telemetry": "^1.0.0",
     "eventsource": "^4.0.0",
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "@types/vscode": "^1.102.0",
+    "@babel/types": "^7.28.4",
     "@types/express": "^5.0.3",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^24.0.15",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/vscode": "^1.102.0",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
+    "@vscode/extension-telemetry": "^1.0.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
+    "dts-bundle-generator": "^9.5.1",
     "esbuild": "^0.25.6",
     "eslint": "^9.31.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.8.3"
+    "typescript": "^5"
   }
 }
