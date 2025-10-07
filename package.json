@@ -1,27 +1,23 @@
 {
-  "name": "agent-todos",
+  "name": "@seanm/agent-todos",
   "displayName": "Agent TODOs",
-  "description": "Upgrades VS Code's agent mode with persistent memory and workflow management",
+  "description": "MCP toolset providing agents with persistent task-oriented memory and workflow management",
   "version": "0.0.2",
-  "publisher": "digitarald",
-  "preview": true,
+  "private": true,
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitarald/vscode-agent-todos"
+    "url": "https://github.com/seanmobrien/vscode-agent-todos"
   },
   "license": "MIT",
   "engines": {
-    "vscode": "^1.102.0",
     "node": ">=22.0.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onMcpServerDefinitionProvider:digitarald.agent-todos.mcp-provider"
-  ],
-  "main": "./dist/extension.js",
+  "main": "./dist/mcp/index.js",
+  "types": "./dist/mcp/index.d.ts",
   "contributes": {
     "commands": [
       {
@@ -368,38 +364,45 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
-    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "build": "npm run package && npm run build:types && npm run package:types",
+    "dev": "npm run check:types && npm run lint && node esbuild.js --watch",
+    "compile": "npm run check:types && npm run lint && node esbuild.js",
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "package": "npm run check:types && npm run lint && node esbuild.js --production",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "check-types": "tsc --noEmit",
+    "check:types": "tsc --noEmit",
+    "build:types": "tsc -p tsconfig.types.json --emitDeclarationOnly",
+    "package:types": "dts-bundle-generator -o dist/mcp/index.d.ts --project tsconfig.types.json dist/types/src/mcp/standaloneTodoManager.d.ts",
     "lint": "eslint src",
     "test": "vscode-test",
     "mcp-server": "node dist/mcp/standalone.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.16.0",
-    "@vscode/extension-telemetry": "^1.0.0",
     "eventsource": "^4.0.0",
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "@types/vscode": "^1.102.0",
+    "@babel/types": "^7.28.4",
     "@types/express": "^5.0.3",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^24.0.15",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/vscode": "^1.102.0",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
+    "@vscode/extension-telemetry": "^1.0.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
+    "dts-bundle-generator": "^9.5.1",
     "esbuild": "^0.25.6",
     "eslint": "^9.31.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.8.3"
+    "typescript": "^5"
   }
 }

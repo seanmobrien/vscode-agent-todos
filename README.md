@@ -1,13 +1,10 @@
 # Agent TODOs
 
-[![CI](https://github.com/digitarald/vscode-agent-todos/actions/workflows/auto-release.yml/badge.svg)](https://github.com/digitarald/vscode-agent-todos/actions/workflows/auto-release.yml)
-[![Release](https://github.com/digitarald/vscode-agent-todos/actions/workflows/release.yml/badge.svg)](https://github.com/digitarald/vscode-agent-todos/actions/workflows/release.yml)
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/digitarald.agent-todos)](https://marketplace.visualstudio.com/items?itemName=digitarald.agent-todos)
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/digitarald.agent-todos)](https://marketplace.visualstudio.com/items?itemName=digitarald.agent-todos)
+[![Forked From](https://github.com/digitarald/vscode-agent-todos/actions/workflows/auto-release.yml/badge.svg)](https://github.com/digitarald/vscode-agent-todos/actions/workflows/auto-release.yml)
 
 **Your AI pair programmer's memory system.** Seamlessly integrate persistent task tracking with GitHub Copilot and VS Code's native AI features—giving your coding assistant perfect memory across sessions.
 
-> *"Finally, an AI assistant that remembers what we planned to do next."*
+> _"Finally, an AI assistant that remembers what we planned to do next."_
 
 ## Why Agent TODOs?
 
@@ -16,7 +13,7 @@ VS Code's agent mode is incredibly powerful for code generation and problem-solv
 **Agent TODOs upgrades your AI coding experience** by adding a persistent memory system that:
 
 - **Enhances workflow continuity** across sessions, building on VS Code's excellent chat capabilities
-- **Scales task complexity** by adding structured decomposition to complement VS Code's problem-solving power  
+- **Scales task complexity** by adding structured decomposition to complement VS Code's problem-solving power
 - **Optimizes context efficiency** by working alongside VS Code's native AI to manage information flow
 - **Adds professional tracking** with rollback capabilities that extend VS Code's debugging features
 
@@ -34,7 +31,7 @@ VS Code's agent mode is incredibly powerful for code generation and problem-solv
 ## How It Works
 
 1. **Install** → Extension adds todo tools to GitHub Copilot automatically
-2. **Plan** → Ask Copilot to create and organize your development tasks  
+2. **Plan** → Ask Copilot to create and organize your development tasks
 3. **Track** → Visual tree view shows progress; AI remembers everything
 4. **Execute** → Run todos directly in VS Code Chat with full context
 
@@ -47,7 +44,7 @@ GitHub Copilot: "I'll create a structured plan for user authentication. Let me b
 
 📝 Creating todos:
 • Set up authentication routes (high priority)
-• Configure auth library integration  
+• Configure auth library integration
 • Create login/register endpoints
 • Add JWT middleware for protected routes
 • Write authentication tests
@@ -76,28 +73,6 @@ You: "What's left to do?"
 
 GitHub Copilot: "Let me check your current workflow state..."
 
-📋 Authentication TODOs (2/5 completed):
-✅ Set up authentication routes
-✅ Configure auth library integration  
-⏳ Create login/register endpoints (next up)
-⏳ Add JWT middleware for protected routes
-⏳ Write authentication tests
-
-You: "Use the existing auth library we have"
-
-GitHub Copilot: "I see you already have `express-jwt` and `passport` in your dependencies. Let me update our approach to leverage these existing libraries and avoid redundant work..."
-
-🔄 Updated todo: "Create login/register endpoints" → in_progress
-
-*Configures passport strategies*
-*Integrates with existing user model*  
-*Creates streamlined auth endpoints using passport*
-
-✅ Completed "Create login/register endpoints"
-
-The existing auth library simplified our implementation significantly. Our persistent workflow state helped me avoid reprocessing the project setup...
-
-🔄 Updated todo: "Add JWT middleware for protected routes" → in_progress
 ```
 
 ## Quick Start
@@ -110,9 +85,10 @@ The existing auth library simplified our implementation significantly. Our persi
 4. **Watch the magic**: Todos appear in the Explorer tree view and sync with Copilot's memory
 
 **Try asking GitHub Copilot:**
-- *"Create a todo list for implementing user authentication"*
-- *"What should I work on next based on my current todos?"*  
-- *"Mark the database setup task as completed and suggest the next step"*
+
+- _"Create a todo list for implementing user authentication"_
+- _"What should I work on next based on my current todos?"_
+- _"Mark the database setup task as completed and suggest the next step"_
 
 ## Get Started
 
@@ -125,9 +101,10 @@ The existing auth library simplified our implementation significantly. Our persi
 ### Try These Commands
 
 Ask GitHub Copilot:
-- *"Create a todo list for implementing user authentication"*
-- *"What should I work on next based on my current todos?"*  
-- *"Mark the database setup task as completed and suggest the next step"*
+
+- _"Create a todo list for implementing user authentication"_
+- _"What should I work on next based on my current todos?"_
+- _"Mark the database setup task as completed and suggest the next step"_
 
 ---
 
